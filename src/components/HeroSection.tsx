@@ -23,9 +23,15 @@ const HeroSection = () => {
           <span className="text-gradient-gold">Software Solutions</span>
         </h1>
 
-        <p className="text-primary-foreground/75 text-lg md:text-xl max-w-2xl mx-auto mb-10 opacity-0 animate-fade-up font-light leading-relaxed" style={{ animationDelay: "0.6s" }}>
+        <p className="text-primary-foreground/75 text-lg md:text-xl max-w-2xl mx-auto mb-4 opacity-0 animate-fade-up font-light leading-relaxed" style={{ animationDelay: "0.6s" }}>
           For everyday consumers and businesses — built with care, rooted in craft,
           and inspired by the visionary spirit of Ada Lovelace.
+        </p>
+
+        {/* Ada Lovelace Quote */}
+        <p className="font-serif text-primary-foreground/50 text-sm italic max-w-lg mx-auto mb-10 opacity-0 animate-fade-up" style={{ animationDelay: "0.7s" }}>
+          "The Analytical Engine weaves algebraical patterns just as the Jacquard loom weaves flowers and leaves."
+          <span className="not-italic text-accent/60 ml-1">— Ada Lovelace</span>
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 opacity-0 animate-fade-up" style={{ animationDelay: "0.8s" }}>

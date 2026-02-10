@@ -1,17 +1,26 @@
 import { useState } from "react";
-import { Mail, MapPin, Send } from "lucide-react";
+import { Mail, MapPin, Send, Linkedin } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const projectTypes = [
-  "Mobile App",
-  "Web Application",
-  "SaaS Platform",
-  "Consulting",
+  "Social Platform",
+  "Utility App",
+  "Business Software",
   "Other",
+];
+
+const founders = [
+  { name: "Kendra Garcia", linkedin: "#" },
+  { name: "Sean Hall", linkedin: "#" },
+  { name: "Lawton Ward", linkedin: "#" },
 ];
 
 const ContactSection = () => {
   const { toast } = useToast();
+  const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation();
+  const { ref: formRef, isVisible: formVisible } = useScrollAnimation({ threshold: 0.1 });
+
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -56,19 +65,29 @@ const ContactSection = () => {
   return (
     <section id="contact" className="section-padding bg-primary">
       <div className="container mx-auto max-w-5xl">
-        <div className="text-center mb-16">
+        <div
+          ref={headerRef}
+          className={`text-center mb-16 transition-all duration-700 ease-out ${
+            headerVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
           <span className="text-accent text-sm tracking-[0.2em] uppercase font-medium">
             Get in Touch
           </span>
           <h2 className="font-serif text-3xl md:text-5xl font-bold text-primary-foreground mt-3 mb-6">
-            Let's Build Something Meaningful
+            Let's Build Something Meaningful Together
           </h2>
           <div className="ornamental-divider max-w-xs mx-auto">
             <span className="text-accent">✦</span>
           </div>
         </div>
 
-        <div className="grid lg:grid-cols-5 gap-12">
+        <div
+          ref={formRef}
+          className={`grid lg:grid-cols-5 gap-12 transition-all duration-700 ease-out delay-200 ${
+            formVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
           {/* Info */}
           <div className="lg:col-span-2 space-y-8">
             <p className="text-primary-foreground/70 text-lg leading-relaxed">
@@ -86,8 +105,29 @@ const ContactSection = () => {
               <div className="flex items-center gap-3">
                 <MapPin className="w-5 h-5 text-accent" />
                 <span className="text-primary-foreground/80 text-sm">
-                  Atlanta, Georgia
+                  Atlanta, Georgia (Georgia Tech Alumni)
                 </span>
+              </div>
+            </div>
+
+            {/* Founder LinkedIn Links */}
+            <div>
+              <h4 className="text-primary-foreground/50 text-xs uppercase tracking-[0.15em] font-semibold mb-3">
+                Connect with Us
+              </h4>
+              <div className="space-y-2">
+                {founders.map((f) => (
+                  <a
+                    key={f.name}
+                    href={f.linkedin}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 text-primary-foreground/60 hover:text-accent transition-colors text-sm"
+                  >
+                    <Linkedin className="w-4 h-4" />
+                    {f.name}
+                  </a>
+                ))}
               </div>
             </div>
           </div>
