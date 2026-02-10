@@ -1,4 +1,6 @@
 import { Code2, Heart, Lightbulb } from "lucide-react";
+import adaPortrait from "@/assets/ada-lovelace.jpg";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const values = [
   {
@@ -22,11 +24,21 @@ const values = [
 ];
 
 const AboutSection = () => {
+  const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation();
+  const { ref: storyRef, isVisible: storyVisible } = useScrollAnimation();
+  const { ref: adaRef, isVisible: adaVisible } = useScrollAnimation();
+  const { ref: valuesRef, isVisible: valuesVisible } = useScrollAnimation();
+
   return (
     <section id="about" className="section-padding bg-background">
       <div className="container mx-auto max-w-5xl">
         {/* Section heading */}
-        <div className="text-center mb-16">
+        <div
+          ref={headerRef}
+          className={`text-center mb-16 transition-all duration-700 ease-out ${
+            headerVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
           <span className="text-accent text-sm tracking-[0.2em] uppercase font-medium">
             Our Story
           </span>
@@ -39,7 +51,12 @@ const AboutSection = () => {
         </div>
 
         {/* Story */}
-        <div className="max-w-3xl mx-auto text-center mb-16">
+        <div
+          ref={storyRef}
+          className={`max-w-3xl mx-auto text-center mb-16 transition-all duration-700 ease-out delay-100 ${
+            storyVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
           <p className="text-muted-foreground text-lg leading-relaxed mb-6">
             Lovelace was born from a shared vision among three Georgia Tech graduate students who believed software
             could be more — more thoughtful, more human, more meaningful. Named after{" "}
@@ -55,12 +72,42 @@ const AboutSection = () => {
           </p>
         </div>
 
+        {/* Ada Lovelace Feature */}
+        <div
+          ref={adaRef}
+          className={`flex flex-col md:flex-row items-center gap-10 mb-20 transition-all duration-700 ease-out ${
+            adaVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+          }`}
+        >
+          <div className="w-48 h-60 flex-shrink-0 rounded-lg overflow-hidden border-2 border-accent/30 shadow-lg">
+            <img
+              src={adaPortrait}
+              alt="Portrait of Ada Lovelace, the world's first computer programmer"
+              className="w-full h-full object-cover"
+              loading="lazy"
+            />
+          </div>
+          <div className="text-center md:text-left">
+            <blockquote className="font-serif text-xl md:text-2xl text-foreground italic leading-relaxed mb-4">
+              "The Analytical Engine weaves algebraical patterns just as the Jacquard loom weaves flowers and leaves."
+            </blockquote>
+            <p className="text-accent font-medium text-sm tracking-wide mb-4">— Ada Lovelace, 1843</p>
+            <p className="text-muted-foreground leading-relaxed">
+              Named after Ada Lovelace, the world's first computer programmer, we honor her legacy of
+              innovation and vision by building technology that serves people first.
+            </p>
+          </div>
+        </div>
+
         {/* Values */}
-        <div className="grid md:grid-cols-3 gap-8">
+        <div ref={valuesRef} className="grid md:grid-cols-3 gap-8">
           {values.map((value, index) => (
             <div
               key={value.title}
-              className="bg-card rounded-lg p-8 text-center border border-border hover:border-accent/30 transition-colors group"
+              className={`bg-card rounded-lg p-8 text-center border border-border hover:border-accent/30 transition-all duration-700 ease-out group ${
+                valuesVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
+              }`}
+              style={{ transitionDelay: `${index * 150}ms` }}
             >
               <div className="w-12 h-12 mx-auto mb-5 rounded-full bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
                 <value.icon className="w-5 h-5 text-accent" />
