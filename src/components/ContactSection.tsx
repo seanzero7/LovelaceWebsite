@@ -16,7 +16,7 @@ const founders = [
   { name: "Sean Hall", linkedin: "https://www.linkedin.com/in/sean-hall-gatech/" },
 ];
 
-const CONTACT_ENDPOINT = "https://formsubmit.co/ajax/lovelacetechnologiesgt@gmail.com";
+const CONTACT_ENDPOINT = "https://formsubmit.co/ajax/e9e0a59223ff65527b15864e594fc4e1";
 const CONTACT_CC = ["lawton.ward45@gmail.com", "garcia.kendra73@gmail.com"].join(",");
 
 const ContactSection = () => {
