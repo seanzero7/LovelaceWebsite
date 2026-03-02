@@ -16,12 +16,8 @@ const founders = [
   { name: "Sean Hall", linkedin: "https://www.linkedin.com/in/sean-hall-gatech/" },
 ];
 
-const CONTACT_ENDPOINT = "https://formsubmit.co/ajax/hello@lovelacellc.com";
-const CONTACT_CC = [
-  "lovelacetechnologiesgt@gmail.com",
-  "lawton.ward45@gmail.com",
-  "garcia.kendra73@gmail.com",
-].join(",");
+const CONTACT_ENDPOINT = "https://formsubmit.co/ajax/lovelacetechnologiesgt@gmail.com";
+const CONTACT_CC = ["lawton.ward45@gmail.com", "garcia.kendra73@gmail.com"].join(",");
 
 const ContactSection = () => {
   const { toast } = useToast();
@@ -88,7 +84,7 @@ const ContactSection = () => {
     } catch {
       toast({
         title: "Message failed to send",
-        description: "Please email hello@lovelacellc.com directly and we will respond quickly.",
+        description: "Please email lovelacetechnologiesgt@gmail.com directly and we will respond quickly.",
         variant: "destructive",
       });
     } finally {
@@ -142,7 +138,7 @@ const ContactSection = () => {
               <div className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-accent" />
                 <span className="text-primary-foreground/80 text-sm">
-                  hello@lovelacellc.com
+                  lovelacetechnologiesgt@gmail.com
                 </span>
               </div>
               <div className="flex items-center gap-3">

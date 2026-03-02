@@ -2,11 +2,8 @@ const Footer = () => {
   return (
     <footer className="bg-primary border-t border-primary-foreground/10 py-10 px-6">
       <div className="container mx-auto max-w-5xl flex flex-col md:flex-row items-center justify-between gap-4">
-        <div className="flex items-center gap-2 whitespace-nowrap">
-          <span className="font-serif text-lg font-bold text-primary-foreground">
-            Lovelace
-          </span>
-          <span className="text-primary-foreground/40 text-xs">LLC</span>
+        <div className="font-serif text-lg font-bold text-primary-foreground shrink-0 whitespace-nowrap">
+          Lovelace&nbsp;<span className="text-primary-foreground/40 text-xs font-sans">LLC</span>
         </div>
 
         <p className="text-primary-foreground/40 text-xs text-center">
