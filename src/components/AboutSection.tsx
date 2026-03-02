@@ -59,7 +59,7 @@ const AboutSection = () => {
         >
           <p className="text-muted-foreground text-lg leading-relaxed mb-6">
             Lovelace was born from a shared vision among three Georgia Tech graduate students who believed software
-            could be more — more thoughtful, more human, more meaningful. Named after{" "}
+            could be more thoughtful, more human, and more meaningful. Named after{" "}
             <span className="text-accent font-medium">Ada Lovelace</span>, the world's first computer programmer
             and a visionary who saw the potential of computing long before anyone else, our company carries forward
             that spirit of imagination and purpose.

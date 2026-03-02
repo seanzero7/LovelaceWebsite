@@ -26,7 +26,7 @@ const Navbar = () => {
           : "bg-transparent py-5"
       }`}
     >
-      <div className="container mx-auto flex items-center justify-between px-6">
+      <div className="mx-0 flex items-center justify-between px-3 md:px-4">
         <a href="#" className="flex items-center gap-2 font-serif text-2xl font-bold text-primary-foreground tracking-wide">
           <img
             src="/LovelaceIconFinal.png"
@@ -48,12 +48,6 @@ const Navbar = () => {
               {link.label}
             </a>
           ))}
-          <a
-            href="#contact"
-            className="bg-accent text-accent-foreground px-5 py-2 rounded text-sm font-semibold hover:bg-gold-dark transition-colors"
-          >
-            Get in Touch
-          </a>
         </div>
 
         {/* Mobile toggle */}
@@ -80,13 +74,6 @@ const Navbar = () => {
                 {link.label}
               </a>
             ))}
-            <a
-              href="#contact"
-              onClick={() => setMobileOpen(false)}
-              className="bg-accent text-accent-foreground px-5 py-2 rounded text-sm font-semibold"
-            >
-              Get in Touch
-            </a>
           </div>
         </div>
       )}

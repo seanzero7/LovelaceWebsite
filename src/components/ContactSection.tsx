@@ -16,6 +16,13 @@ const founders = [
   { name: "Sean Hall", linkedin: "https://www.linkedin.com/in/sean-hall-gatech/" },
 ];
 
+const CONTACT_ENDPOINT = "https://formsubmit.co/ajax/hello@lovelacellc.com";
+const CONTACT_CC = [
+  "lovelacetechnologiesgt@gmail.com",
+  "lawton.ward45@gmail.com",
+  "garcia.kendra73@gmail.com",
+].join(",");
+
 const ContactSection = () => {
   const { toast } = useToast();
   const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation();
@@ -28,6 +35,7 @@ const ContactSection = () => {
     projectType: "",
     message: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
 
   const validate = () => {
@@ -42,15 +50,50 @@ const ContactSection = () => {
     return Object.keys(errs).length === 0;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!validate()) return;
-    toast({
-      title: "Message sent!",
-      description: "Thank you for reaching out. We'll be in touch soon.",
-    });
-    setForm({ name: "", email: "", company: "", projectType: "", message: "" });
-    setErrors({});
+    if (!validate() || isSubmitting) return;
+
+    setIsSubmitting(true);
+    try {
+      const response = await fetch(CONTACT_ENDPOINT, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          company: form.company || "Not provided",
+          projectType: form.projectType,
+          message: form.message,
+          _subject: `New Lovelace website inquiry from ${form.name}`,
+          _cc: CONTACT_CC,
+          _captcha: "false",
+          _template: "table",
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Submission failed");
+      }
+
+      toast({
+        title: "Message sent!",
+        description: "Thank you for reaching out. We'll be in touch soon.",
+      });
+      setForm({ name: "", email: "", company: "", projectType: "", message: "" });
+      setErrors({});
+    } catch {
+      toast({
+        title: "Message failed to send",
+        description: "Please email hello@lovelacellc.com directly and we will respond quickly.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (
@@ -177,9 +220,13 @@ const ContactSection = () => {
                 name="projectType"
                 value={form.projectType}
                 onChange={handleChange}
-                className="w-full bg-primary-foreground/5 border border-primary-foreground/15 rounded px-4 py-3 text-primary-foreground text-sm focus:outline-none focus:border-accent transition-colors appearance-none"
+                className={`w-full bg-primary-foreground/5 border border-primary-foreground/15 rounded px-4 py-3 text-sm focus:outline-none focus:border-accent transition-colors appearance-none ${
+                  form.projectType ? "text-primary-foreground" : "text-primary-foreground/40"
+                }`}
               >
-                <option value="" className="text-foreground">Project Type</option>
+                <option value="" disabled className="text-foreground/40">
+                  Project Type
+                </option>
                 {projectTypes.map((type) => (
                   <option key={type} value={type} className="text-foreground">
                     {type}
@@ -205,10 +252,11 @@ const ContactSection = () => {
 
             <button
               type="submit"
+              disabled={isSubmitting}
               className="bg-accent text-accent-foreground px-8 py-3 rounded font-semibold text-sm tracking-wide hover:bg-gold-dark transition-colors flex items-center gap-2"
             >
               <Send className="w-4 h-4" />
-              Send Message
+              {isSubmitting ? "Sending..." : "Send Message"}
             </button>
           </form>
         </div>

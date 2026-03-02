@@ -2,7 +2,7 @@ const Footer = () => {
   return (
     <footer className="bg-primary border-t border-primary-foreground/10 py-10 px-6">
       <div className="container mx-auto max-w-5xl flex flex-col md:flex-row items-center justify-between gap-4">
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 whitespace-nowrap">
           <span className="font-serif text-lg font-bold text-primary-foreground">
             Lovelace
           </span>
