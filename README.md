@@ -1,4 +1,5 @@
-# Welcome to your Lovable project
+# LovelaceWebsite
+Lovelace's Official Website
 
 ## Project info
 
