@@ -11,9 +11,9 @@ const projectTypes = [
 ];
 
 const founders = [
-  { name: "Kendra Garcia", linkedin: "#" },
-  { name: "Sean Hall", linkedin: "#" },
-  { name: "Lawton Ward", linkedin: "#" },
+  { name: "Kendra Garcia", linkedin: "https://www.linkedin.com/in/k3ndra-garcia/" },
+  { name: "Lawton Ward", linkedin: "https://www.linkedin.com/in/lawton-ward/" },
+  { name: "Sean Hall", linkedin: "https://www.linkedin.com/in/sean-hall-gatech/" },
 ];
 
 const ContactSection = () => {

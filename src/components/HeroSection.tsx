@@ -1,4 +1,5 @@
 import heroBg from "@/assets/hero-bg.jpg";
+import { ChevronDown } from "lucide-react";
 
 const HeroSection = () => {
   return (
@@ -52,9 +53,13 @@ const HeroSection = () => {
 
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 opacity-0 animate-fade-in" style={{ animationDelay: "1.2s" }}>
-        <div className="w-5 h-8 border-2 border-primary-foreground/30 rounded-full flex justify-center pt-1">
-          <div className="w-1 h-2 bg-accent rounded-full animate-bounce" />
-        </div>
+        <a
+          href="#about"
+          aria-label="Scroll to About section"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-primary-foreground/35 text-primary-foreground/80 transition-colors hover:border-accent hover:text-accent"
+        >
+          <ChevronDown className="h-5 w-5 animate-bounce" />
+        </a>
       </div>
     </section>
   );

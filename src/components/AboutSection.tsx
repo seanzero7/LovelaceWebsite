@@ -1,5 +1,5 @@
 import { Code2, Heart, Lightbulb } from "lucide-react";
-import adaPortrait from "@/assets/ada-lovelace.jpg";
+import adaPortrait from "../../Ada-1945299396.jpg";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const values = [
@@ -65,10 +65,10 @@ const AboutSection = () => {
             that spirit of imagination and purpose.
           </p>
           <p className="text-muted-foreground text-lg leading-relaxed">
-            Today, we're a boutique software studio based in Atlanta, Georgia, crafting apps and platforms
-            that range from social experiences to essential business utilities — all guided by our
-            People First philosophy. We're currently building our portfolio and taking on select projects
-            that align with our mission.
+            Today, we're a boutique software studio based in Atlanta, Georgia, building hand-tailored software
+            and platforms for businesses that need solutions crafted around their workflows, teams, and goals.
+            Every engagement is uniquely designed to fit the people behind the business while staying true to our
+            People First philosophy.
           </p>
         </div>
 

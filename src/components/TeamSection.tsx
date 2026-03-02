@@ -15,8 +15,7 @@ const team = [
       "B.S. in Industrial and Product Design (Georgia Tech)",
       "Exchange Scholar (Universitat Politècnica de València)",
     ],
-    expertise: ["UX/UI Design", "Design Systems", "User Research", "Product Strategy", "Branding"],
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/k3ndra-garcia/",
   },
   {
     name: "Sean Hall",
@@ -27,8 +26,7 @@ const team = [
       "M.S. in Electrical and Computer Engineering (Georgia Tech)",
       "B.S. in Physics and Computer Science (Tulane University, Phi Beta Kappa)",
     ],
-    expertise: ["Machine Learning", "Digital Signal Processing", "Python Development", "Systems Engineering", "Quantum Computing"],
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/sean-hall-gatech/",
   },
   {
     name: "Lawton Ward",
@@ -39,8 +37,7 @@ const team = [
       "MBA in Strategy & Innovation and Business Analytics (Georgia Tech, Merit-based Scholarship)",
       "B.A. in Economics (College of the Holy Cross, D1 Athlete)",
     ],
-    expertise: ["Business Strategy", "Operations Management", "M&A Advisory", "Growth Strategy", "Venture Capital"],
-    linkedin: "#",
+    linkedin: "https://www.linkedin.com/in/lawton-ward/",
   },
 ];
 
@@ -60,7 +57,7 @@ const TeamMemberCard = ({ member, index }: { member: typeof team[0]; index: numb
           <img
             src={member.image}
             alt={`${member.name}, ${member.role}`}
-            className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+            className="w-full h-full object-cover"
             loading="lazy"
           />
         </div>
@@ -85,28 +82,15 @@ const TeamMemberCard = ({ member, index }: { member: typeof team[0]; index: numb
         </ul>
       </div>
 
-      {/* Expertise */}
-      <div className="flex flex-wrap justify-center gap-2 mb-5">
-        {member.expertise.map((skill) => (
-          <span
-            key={skill}
-            className="text-xs bg-accent/10 text-accent px-3 py-1 rounded-full font-medium"
-          >
-            {skill}
-          </span>
-        ))}
-      </div>
-
       {/* LinkedIn */}
       <a
         href={member.linkedin}
         target="_blank"
         rel="noopener noreferrer"
-        className="inline-flex items-center gap-1.5 text-muted-foreground hover:text-accent transition-colors text-sm"
+        className="inline-flex items-center justify-center text-muted-foreground hover:text-accent transition-colors"
         aria-label={`${member.name} on LinkedIn`}
       >
-        <Linkedin className="w-4 h-4" />
-        LinkedIn
+        <Linkedin className="w-5 h-5" />
       </a>
     </div>
   );

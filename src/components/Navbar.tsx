@@ -27,7 +27,13 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto flex items-center justify-between px-6">
-        <a href="#" className="font-serif text-2xl font-bold text-primary-foreground tracking-wide">
+        <a href="#" className="flex items-center gap-2 font-serif text-2xl font-bold text-primary-foreground tracking-wide">
+          <img
+            src="/LovelaceIconFinal.png"
+            alt="Lovelace icon"
+            className="h-7 w-7 invert"
+            loading="eager"
+          />
           Lovelace
         </a>
 
