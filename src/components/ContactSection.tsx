@@ -4,9 +4,10 @@ import { useToast } from "@/hooks/use-toast";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const projectTypes = [
-  "Social Platform",
-  "Utility App",
-  "Business Software",
+  "Custom Software / Platform",
+  "UX Design",
+  "Backend Architecture",
+  "AI Integration & Consulting",
   "Other",
 ];
 

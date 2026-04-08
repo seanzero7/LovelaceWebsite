@@ -65,10 +65,10 @@ const AboutSection = () => {
             that spirit of imagination and purpose.
           </p>
           <p className="text-muted-foreground text-lg leading-relaxed">
-            Today, we're a boutique software studio based in Atlanta, Georgia, building hand-tailored software
-            and platforms for businesses that need solutions crafted around their workflows, teams, and goals.
-            Every engagement is uniquely designed to fit the people behind the business while staying true to our
-            People First philosophy.
+            Today, we're a boutique software studio based in Atlanta, Georgia. We build hand-tailored software
+            and platforms, design end-to-end user experiences, architect resilient backends, and help businesses
+            integrate AI in ways that are strategy-driven rather than trend-driven. Every engagement is uniquely
+            designed to fit the people behind the business while staying true to our People First philosophy.
           </p>
         </div>
 
