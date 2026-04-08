@@ -25,9 +25,9 @@ const HeroSection = () => {
         </h1>
 
         <p className="text-primary-foreground/75 text-lg md:text-xl max-w-2xl mx-auto mb-4 opacity-0 animate-fade-up font-light leading-relaxed" style={{ animationDelay: "0.6s" }}>
-          We design user experiences, architect resilient backends, build custom platforms,
-          and help businesses integrate AI with strategy — not hype. Inspired by the
-          visionary spirit of Ada Lovelace.
+          We build custom software, design fullstack experiences from interface to
+          infrastructure, and help businesses put AI to work in ways that actually fit
+          their goals. Inspired by the visionary spirit of Ada Lovelace.
         </p>
 
         {/* Ada Lovelace Quote */}
