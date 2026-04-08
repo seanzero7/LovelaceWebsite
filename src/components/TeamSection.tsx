@@ -9,7 +9,7 @@ const team = [
     name: "Kendra Garcia",
     role: "Co-Founder · Head of Design",
     image: teamKendra,
-    bio: "Kendra brings a multidisciplinary approach to design, blending product design, UX research, and brand strategy. With experience spanning startup environments to enterprise platforms, she's led end-to-end product redesigns that have improved usability for thousands of users and driven measurable engagement. Her design philosophy centers on creating intuitive, human-centered experiences backed by rigorous user research and testing. At Georgia Tech, Kendra serves as President of the Graduate Entrepreneurship Club and combines her industrial design background with management expertise to bridge creativity and business impact.",
+    bio: "Multidisciplinary designer blending product design, UX research, and brand strategy. Has led end-to-end redesigns across startup and enterprise platforms, improving usability for thousands of users.",
     education: [
       "M.S. in Business, Management, Marketing (Georgia Tech)",
       "B.S. in Industrial and Product Design (Georgia Tech)",
@@ -21,7 +21,7 @@ const team = [
     name: "Sean Hall",
     role: "Co-Founder · Head of Engineering",
     image: teamSean,
-    bio: "Sean is an engineer with deep expertise in digital signal processing, machine learning, and systems engineering. His technical foundation spans quantum sensor simulations, optical engineering, and embedded systems work with aerospace and defense applications. With experience at Northrop Grumman and research labs, Sean brings precision engineering and advanced computational thinking to Lovelace's development process. He combines rigorous technical skills with practical problem-solving, whether building Python-based simulations or optimizing real-world hardware systems. Currently pursuing his Master's in Electrical and Computer Engineering at Georgia Tech, Sean ensures Lovelace's products are built on solid engineering principles.",
+    bio: "Engineer specializing in digital signal processing, machine learning, and systems engineering. Built simulations and embedded systems for aerospace and defense at Northrop Grumman and research labs.",
     education: [
       "M.S. in Electrical and Computer Engineering (Georgia Tech)",
       "B.S. in Physics and Computer Science (Tulane University, Phi Beta Kappa)",
@@ -32,7 +32,7 @@ const team = [
     name: "Lawton Ward",
     role: "Co-Founder · Head of Business",
     image: teamLawton,
-    bio: "Lawton drives Lovelace's business strategy, operations, and growth initiatives. With a track record of scaling operations, expanding client bases, and delivering measurable revenue growth, he brings operational excellence and strategic thinking to the team. His experience spans M&A advisory, venture capital, logistics management, and enterprise sales—giving him a comprehensive view of how to build sustainable, scalable businesses. Currently working in healthcare venture capital alongside his role at Lovelace, Lawton combines analytical rigor with entrepreneurial vision. At Georgia Tech, he serves on multiple leadership boards and is pursuing his MBA with a focus on Strategy & Innovation.",
+    bio: "Drives strategy, operations, and growth. Background spans M&A advisory, venture capital, logistics, and enterprise sales, with current work in healthcare VC.",
     education: [
       "MBA in Strategy & Innovation and Business Analytics (Georgia Tech, Merit-based Scholarship)",
       "B.A. in Economics (College of the Holy Cross, D1 Athlete)",
@@ -118,8 +118,8 @@ const TeamSection = () => {
             <span className="text-accent">✦</span>
           </div>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto mt-6">
-            We met as graduate students at Georgia Tech, united by a belief that technology should serve
-            people — not the other way around.
+            We met during graduate school at Georgia Tech, united by a belief that technology should serve
+            people, not the other way around.
           </p>
         </div>
 

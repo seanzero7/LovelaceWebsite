@@ -1,30 +1,24 @@
-import { Layout, Server, Sparkles, Code2 } from "lucide-react";
+import { Sparkles, Code2, Layers } from "lucide-react";
 import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const services = [
   {
-    icon: Code2,
-    title: "Custom Software & Platforms",
-    description:
-      "Hand-tailored web and mobile applications built around your workflows, your team, and the people you serve.",
-  },
-  {
-    icon: Layout,
-    title: "UX Design",
-    description:
-      "Research-driven interfaces and product experiences that feel intuitive, accessible, and unmistakably human.",
-  },
-  {
-    icon: Server,
-    title: "Backend Architecture",
-    description:
-      "Thoughtful system design — APIs, data models, and infrastructure built to scale gracefully as your business grows.",
-  },
-  {
     icon: Sparkles,
-    title: "Strategy-Driven AI Integration",
+    title: "AI Consulting",
     description:
-      "AI implementation and consulting that starts with your goals, not the hype — choosing the right models, tools, and stack to deliver real value.",
+      "Practical AI strategy and implementation. We help you choose the right models, tools, and stack so AI fits your goals and delivers real value.",
+  },
+  {
+    icon: Code2,
+    title: "Software",
+    description:
+      "Custom web and mobile applications built around your workflows, your team, and the people you serve.",
+  },
+  {
+    icon: Layers,
+    title: "Fullstack Design",
+    description:
+      "End-to-end product design from interface to infrastructure. Research-driven UX paired with thoughtful backend architecture that scales as you grow.",
   },
 ];
 
@@ -56,7 +50,7 @@ const ServicesSection = () => {
           </p>
         </div>
 
-        <div ref={gridRef} className="grid sm:grid-cols-2 gap-8">
+        <div ref={gridRef} className="grid md:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <div
               key={service.title}
