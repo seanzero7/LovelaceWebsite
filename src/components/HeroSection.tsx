@@ -14,7 +14,7 @@ const HeroSection = () => {
         {/* Ornamental top */}
         <div className="flex justify-center mb-6 opacity-0 animate-fade-in" style={{ animationDelay: "0.2s" }}>
           <span className="text-accent text-sm tracking-[0.3em] uppercase font-medium">
-            ✦&ensp;Software · UX · Architecture · AI&ensp;✦
+            ✦&ensp;Software · Fullstack Design · AI Consulting&ensp;✦
           </span>
         </div>
 
