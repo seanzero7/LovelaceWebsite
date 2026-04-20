@@ -86,163 +86,224 @@ const ContactSection = () => {
   };
 
   const inputClass =
-    "w-full bg-background border border-foreground/60 px-3 py-3 text-[16px] font-serif focus:outline-none focus:border-accent focus:ring-0";
+    "w-full bg-transparent border-b-2 border-background/40 px-0 py-3 text-[18px] text-background placeholder:text-background/40 focus:outline-none focus:border-accent no-border";
 
   return (
-    <section id="contact" className="rule-bottom bg-foreground text-background">
-      <div className="section-shell py-20 md:py-28">
-        <div className="grid md:grid-cols-12 gap-8 mb-14 md:mb-16">
+    <section id="contact" className="border-b-2 border-foreground bg-foreground text-background">
+      <div className="shell">
+        {/* header */}
+        <div className="grid md:grid-cols-12 gap-6 py-8 border-b border-background/30">
           <div className="md:col-span-3">
-            <p className="label-mono" style={{ color: "hsl(var(--background) / 0.6)" }}>
-              &sect; 04 / Contact
+            <p className="micro" style={{ color: "hsl(var(--background) / 0.7)" }}>
+              04 / Index / Contact
             </p>
           </div>
           <div className="md:col-span-9">
-            <h2 className="display-serif text-[44px] md:text-[64px] leading-[1.02] max-w-3xl">
-              Tell us about
-              <br />
-              <em>the project.</em>
-            </h2>
-            <p className="mt-6 text-[18px] max-w-xl opacity-80">
-              The quickest way to reach us is by email. We read
-              everything that comes in and usually respond
-              within a day or two.
-            </p>
+            <p className="micro text-right" style={{ color: "hsl(var(--background) / 0.5)" }}>p. 004</p>
           </div>
         </div>
 
-        <div className="grid md:grid-cols-12 gap-10 border-t border-background/30 pt-12">
-          <div className="md:col-span-4 space-y-6 text-[16px]">
-            <div>
-              <p className="label-mono mb-1" style={{ color: "hsl(var(--background) / 0.6)" }}>Email</p>
-              <a
-                href="mailto:lovelacetechnologiesgt@gmail.com"
-                className="text-background hover:text-accent break-all"
-              >
-                lovelacetechnologiesgt@gmail.com
-              </a>
-            </div>
-            <div>
-              <p className="label-mono mb-1" style={{ color: "hsl(var(--background) / 0.6)" }}>Studio</p>
-              <p>Atlanta, Georgia</p>
-            </div>
-            <div>
-              <p className="label-mono mb-1" style={{ color: "hsl(var(--background) / 0.6)" }}>Response time</p>
-              <p>Typically within one business day.</p>
-            </div>
-            <div className="pt-4 text-[14px] opacity-70 italic">
-              Prefer a form? On your right. We don&rsquo;t love
-              forms either, but it keeps things tidy.
-            </div>
-          </div>
+        <div className="py-16 md:py-24">
+          <h2 className="display-sans text-[56px] md:text-[120px] mb-10">
+            let&rsquo;s talk.
+            <br />
+            <span className="text-accent">we mean it.</span>
+          </h2>
+          <p className="text-[18px] max-w-xl opacity-85 mb-12">
+            If you have a project in mind, a problem you are
+            stuck on, or just want to see if we are a fit, drop
+            us a line. We read every inquiry ourselves and
+            usually respond within a day.
+          </p>
 
-          {sent ? (
-            <div className="md:col-span-8 border border-background/40 p-8 bg-background/5">
-              <p className="label-mono mb-3" style={{ color: "hsl(var(--background) / 0.6)" }}>Received</p>
-              <p className="display-serif text-[28px] mb-3">Thanks, got it.</p>
-              <p className="text-[16px] opacity-85">
-                One of us will write back soon. If it is urgent,
-                email us directly at{" "}
-                <a href="mailto:lovelacetechnologiesgt@gmail.com" className="text-accent">
+          <div className="grid md:grid-cols-12 gap-8 md:gap-12">
+            <div className="md:col-span-5">
+              <div className="border border-background/30 p-6 md:p-8">
+                <div className="flex items-baseline justify-between mb-6">
+                  <p className="micro" style={{ color: "hsl(var(--background) / 0.6)" }}>Channel / 01</p>
+                  <p className="micro" style={{ color: "hsl(var(--background) / 0.4)" }}>Fastest</p>
+                </div>
+                <p className="display-sans text-[22px] mb-3 normal-case">Email us.</p>
+                <a
+                  href="mailto:lovelacetechnologiesgt@gmail.com"
+                  className="text-[15px] break-all hover:text-accent"
+                  style={{ borderColor: "hsl(var(--background) / 0.4)" }}
+                >
                   lovelacetechnologiesgt@gmail.com
                 </a>
-                .
-              </p>
+              </div>
+
+              <div className="border border-background/30 border-t-0 p-6 md:p-8">
+                <div className="flex items-baseline justify-between mb-6">
+                  <p className="micro" style={{ color: "hsl(var(--background) / 0.6)" }}>Channel / 02</p>
+                  <p className="micro" style={{ color: "hsl(var(--background) / 0.4)" }}>Formal</p>
+                </div>
+                <p className="display-sans text-[22px] mb-3 normal-case">Use the form.</p>
+                <p className="text-[14px] opacity-70 leading-relaxed">
+                  If your inquiry involves an RFP, NDA, or
+                  anything that needs structure, the form
+                  keeps it tidy on our end.
+                </p>
+              </div>
+
+              <div className="border border-background/30 border-t-0 p-6 md:p-8">
+                <div className="flex items-baseline justify-between mb-6">
+                  <p className="micro" style={{ color: "hsl(var(--background) / 0.6)" }}>Channel / 03</p>
+                  <p className="micro" style={{ color: "hsl(var(--background) / 0.4)" }}>In person</p>
+                </div>
+                <p className="display-sans text-[22px] mb-3 normal-case">In Atlanta?</p>
+                <p className="text-[14px] opacity-70 leading-relaxed">
+                  We are happy to grab coffee. Email to set
+                  it up.
+                </p>
+              </div>
             </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="md:col-span-8 space-y-5 text-background">
-              <div className="grid md:grid-cols-2 gap-5">
-                <div>
-                  <label className="label-mono block mb-2" style={{ color: "hsl(var(--background) / 0.6)" }} htmlFor="name">
-                    Your name
-                  </label>
-                  <input
-                    id="name"
-                    name="name"
-                    value={form.name}
-                    onChange={handleChange}
-                    className={inputClass + " text-foreground"}
-                    maxLength={100}
-                  />
-                  {errors.name && <p className="text-accent text-xs mt-1">{errors.name}</p>}
+
+            <div className="md:col-span-7">
+              {sent ? (
+                <div className="border border-background/30 p-8">
+                  <p className="micro mb-4" style={{ color: "hsl(var(--background) / 0.6)" }}>Received</p>
+                  <p className="display-sans text-[36px] mb-4">thanks, got it.</p>
+                  <p className="text-[16px] opacity-85">
+                    One of us will write back shortly. If it is
+                    urgent, email us directly at{" "}
+                    <a
+                      href="mailto:lovelacetechnologiesgt@gmail.com"
+                      className="text-accent"
+                      style={{ borderColor: "hsl(var(--accent))" }}
+                    >
+                      lovelacetechnologiesgt@gmail.com
+                    </a>
+                    .
+                  </p>
                 </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-8">
+                  <div className="grid md:grid-cols-2 gap-x-8 gap-y-6">
+                    <div>
+                      <label
+                        htmlFor="name"
+                        className="micro block mb-2"
+                        style={{ color: "hsl(var(--background) / 0.6)" }}
+                      >
+                        01 / Your name
+                      </label>
+                      <input
+                        id="name"
+                        name="name"
+                        value={form.name}
+                        onChange={handleChange}
+                        className={inputClass}
+                        placeholder="First and last"
+                        maxLength={100}
+                      />
+                      {errors.name && <p className="text-accent text-xs mt-1">{errors.name}</p>}
+                    </div>
 
-                <div>
-                  <label className="label-mono block mb-2" style={{ color: "hsl(var(--background) / 0.6)" }} htmlFor="email">
-                    Email
-                  </label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    value={form.email}
-                    onChange={handleChange}
-                    className={inputClass + " text-foreground"}
-                    maxLength={255}
-                  />
-                  {errors.email && <p className="text-accent text-xs mt-1">{errors.email}</p>}
-                </div>
-              </div>
+                    <div>
+                      <label
+                        htmlFor="email"
+                        className="micro block mb-2"
+                        style={{ color: "hsl(var(--background) / 0.6)" }}
+                      >
+                        02 / Email
+                      </label>
+                      <input
+                        id="email"
+                        name="email"
+                        type="email"
+                        value={form.email}
+                        onChange={handleChange}
+                        className={inputClass}
+                        placeholder="you@company.com"
+                        maxLength={255}
+                      />
+                      {errors.email && <p className="text-accent text-xs mt-1">{errors.email}</p>}
+                    </div>
+                  </div>
 
-              <div className="grid md:grid-cols-2 gap-5">
-                <div>
-                  <label className="label-mono block mb-2" style={{ color: "hsl(var(--background) / 0.6)" }} htmlFor="company">
-                    Company <span className="normal-case italic opacity-70">(optional)</span>
-                  </label>
-                  <input
-                    id="company"
-                    name="company"
-                    value={form.company}
-                    onChange={handleChange}
-                    className={inputClass + " text-foreground"}
-                    maxLength={100}
-                  />
-                </div>
+                  <div className="grid md:grid-cols-2 gap-x-8 gap-y-6">
+                    <div>
+                      <label
+                        htmlFor="company"
+                        className="micro block mb-2"
+                        style={{ color: "hsl(var(--background) / 0.6)" }}
+                      >
+                        03 / Company (optional)
+                      </label>
+                      <input
+                        id="company"
+                        name="company"
+                        value={form.company}
+                        onChange={handleChange}
+                        className={inputClass}
+                        placeholder="If applicable"
+                        maxLength={100}
+                      />
+                    </div>
 
-                <div>
-                  <label className="label-mono block mb-2" style={{ color: "hsl(var(--background) / 0.6)" }} htmlFor="projectType">
-                    Project type
-                  </label>
-                  <select
-                    id="projectType"
-                    name="projectType"
-                    value={form.projectType}
-                    onChange={handleChange}
-                    className={inputClass + " text-foreground"}
-                  >
-                    <option value="">Pick one</option>
-                    {projectTypes.map((t) => (
-                      <option key={t} value={t}>{t}</option>
-                    ))}
-                  </select>
-                </div>
-              </div>
+                    <div>
+                      <label
+                        htmlFor="projectType"
+                        className="micro block mb-2"
+                        style={{ color: "hsl(var(--background) / 0.6)" }}
+                      >
+                        04 / Project type
+                      </label>
+                      <select
+                        id="projectType"
+                        name="projectType"
+                        value={form.projectType}
+                        onChange={handleChange}
+                        className={inputClass}
+                      >
+                        <option value="" className="text-foreground">Pick one</option>
+                        {projectTypes.map((t) => (
+                          <option key={t} value={t} className="text-foreground">
+                            {t}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
 
-              <div>
-                <label className="label-mono block mb-2" style={{ color: "hsl(var(--background) / 0.6)" }} htmlFor="message">
-                  Tell us about it
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={form.message}
-                  onChange={handleChange}
-                  rows={6}
-                  className={inputClass + " text-foreground resize-y"}
-                  maxLength={1000}
-                />
-                {errors.message && <p className="text-accent text-xs mt-1">{errors.message}</p>}
-              </div>
+                  <div>
+                    <label
+                      htmlFor="message"
+                      className="micro block mb-2"
+                      style={{ color: "hsl(var(--background) / 0.6)" }}
+                    >
+                      05 / Tell us about the project
+                    </label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      value={form.message}
+                      onChange={handleChange}
+                      rows={6}
+                      className={inputClass + " resize-y"}
+                      placeholder="What are you trying to build, and what is in the way?"
+                      maxLength={1000}
+                    />
+                    {errors.message && <p className="text-accent text-xs mt-1">{errors.message}</p>}
+                  </div>
 
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className="bg-accent text-background px-7 py-3 text-[14px] tracking-wide hover:bg-background hover:text-foreground border border-accent hover:border-background disabled:opacity-50"
-              >
-                {isSubmitting ? "Sending..." : "Send inquiry"}
-              </button>
-            </form>
-          )}
+                  <div className="flex items-center justify-between pt-4 border-t border-background/30">
+                    <p className="micro" style={{ color: "hsl(var(--background) / 0.5)" }}>
+                      Typically replied within one business day
+                    </p>
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="bg-accent text-background px-7 py-4 micro hover:bg-background hover:text-foreground disabled:opacity-50"
+                    >
+                      {isSubmitting ? "Sending..." : "Send inquiry →"}
+                    </button>
+                  </div>
+                </form>
+              )}
+            </div>
+          </div>
         </div>
       </div>
     </section>

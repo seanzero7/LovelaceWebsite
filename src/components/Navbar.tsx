@@ -1,22 +1,34 @@
 const Navbar = () => {
   return (
-    <nav className="rule-bottom bg-background sticky top-0 z-50">
-      <div className="section-shell flex flex-wrap items-center justify-between gap-x-6 gap-y-2 py-4">
-        <a href="#" className="no-underline text-foreground flex items-baseline gap-3">
+    <nav className="border-b-2 border-foreground bg-background sticky top-0 z-50">
+      <div className="shell flex items-stretch justify-between">
+        <a href="#" className="no-border flex items-center gap-3 py-4 pr-6 border-r border-foreground/20">
           <img
             src="/LovelaceIconFinal.png"
-            alt=""
-            className="h-6 w-6 self-center"
+            alt="Lovelace mark"
+            className="w-6 h-6 object-contain"
             loading="eager"
           />
-          <span className="text-[22px] tracking-tight">Lovelace</span>
-          <span className="label-mono hidden sm:inline">Software Studio / Atlanta</span>
+          <span className="display-sans text-[22px]">lovelace</span>
         </a>
-        <ul className="flex gap-6 list-none m-0 p-0 text-[14px]">
-          <li><a href="#about" className="text-foreground/80 no-underline hover:text-accent hover:underline">About</a></li>
-          <li><a href="#services" className="text-foreground/80 no-underline hover:text-accent hover:underline">Work</a></li>
-          <li><a href="#team" className="text-foreground/80 no-underline hover:text-accent hover:underline">Team</a></li>
-          <li><a href="#contact" className="text-accent">Contact</a></li>
+
+        <div className="hidden md:flex items-center micro text-foreground/60 px-6 border-r border-foreground/20">
+          Independent software studio / Atlanta, GA
+        </div>
+
+        <ul className="flex items-stretch list-none m-0 p-0 ml-auto">
+          <li className="border-l border-foreground/20">
+            <a href="#about" className="no-border flex items-center h-full px-5 micro hover:bg-foreground hover:text-background">01 About</a>
+          </li>
+          <li className="border-l border-foreground/20">
+            <a href="#services" className="no-border flex items-center h-full px-5 micro hover:bg-foreground hover:text-background">02 Work</a>
+          </li>
+          <li className="border-l border-foreground/20">
+            <a href="#team" className="no-border flex items-center h-full px-5 micro hover:bg-foreground hover:text-background">03 Team</a>
+          </li>
+          <li className="border-l border-foreground/20">
+            <a href="#contact" className="no-border flex items-center h-full px-5 micro bg-accent text-accent-foreground hover:bg-foreground">04 Contact</a>
+          </li>
         </ul>
       </div>
     </nav>
