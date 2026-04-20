@@ -1,66 +1,70 @@
-import heroBg from "@/assets/hero-bg.jpg";
-import { ChevronDown } from "lucide-react";
-
 const HeroSection = () => {
   return (
-    <section
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
-      style={{ backgroundImage: `url(${heroBg})`, backgroundSize: "cover", backgroundPosition: "center" }}
-    >
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-primary/60" />
+    <section className="rule-bottom">
+      <div className="section-shell pt-14 md:pt-20 pb-14 md:pb-20">
+        <div className="grid md:grid-cols-12 gap-x-8 gap-y-12 items-start">
+          <div className="md:col-span-8">
+            <p className="label-mono mb-6">
+              <span className="text-accent">&#9679;</span>&nbsp;&nbsp;Currently accepting new projects
+            </p>
 
-      <div className="relative z-10 container mx-auto px-6 text-center">
-        {/* Ornamental top */}
-        <div className="flex justify-center mb-6 opacity-0 animate-fade-in" style={{ animationDelay: "0.2s" }}>
-          <span className="text-accent text-sm tracking-[0.3em] uppercase font-medium">
-            ✦&ensp;AI Consulting · Software · Fullstack Design&ensp;✦
-          </span>
-        </div>
+            <h1 className="display-serif text-[44px] md:text-[72px] lg:text-[84px] mb-8">
+              Software, design,
+              <br />
+              and <em>practical</em> AI.
+              <br />
+              Built by hand in Atlanta.
+            </h1>
 
-        <h1 className="font-serif text-4xl md:text-6xl lg:text-7xl font-bold text-primary-foreground leading-tight mb-6 opacity-0 animate-fade-up" style={{ animationDelay: "0.4s" }}>
-          Software, Systems, and
-          <br />
-          <span className="text-gradient-gold">AI That Works for You</span>
-        </h1>
+            <p className="text-[19px] md:text-[20px] leading-relaxed max-w-[620px] text-foreground/85">
+              Lovelace is a three-person studio. We build custom
+              software, design products from the interface down
+              to the infrastructure, and help companies put AI
+              to work in ways that actually fit the business.
+            </p>
 
-        <p className="text-primary-foreground/75 text-lg md:text-xl max-w-2xl mx-auto mb-4 opacity-0 animate-fade-up font-light leading-relaxed" style={{ animationDelay: "0.6s" }}>
-          We build custom software, design fullstack experiences from interface to
-          infrastructure, and help businesses put AI to work in ways that actually fit
-          their goals. Inspired by the visionary spirit of Ada Lovelace.
-        </p>
+            <div className="mt-10 flex flex-wrap items-center gap-3">
+              <a
+                href="#contact"
+                className="no-underline inline-block bg-foreground text-background px-6 py-3 text-[14px] tracking-wide hover:bg-accent"
+              >
+                Start a project
+              </a>
+              <a
+                href="#services"
+                className="no-underline inline-block border border-foreground px-6 py-3 text-[14px] tracking-wide text-foreground hover:bg-foreground hover:text-background"
+              >
+                See what we do
+              </a>
+            </div>
+          </div>
 
-        {/* Ada Lovelace Quote */}
-        <p className="font-serif text-primary-foreground/50 text-sm italic max-w-lg mx-auto mb-10 opacity-0 animate-fade-up" style={{ animationDelay: "0.7s" }}>
-          "The Analytical Engine weaves algebraical patterns just as the Jacquard loom weaves flowers and leaves."
-          <span className="not-italic text-accent/60 ml-1">— Ada Lovelace</span>
-        </p>
-
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 opacity-0 animate-fade-up" style={{ animationDelay: "0.8s" }}>
-          <a
-            href="#about"
-            className="bg-accent text-accent-foreground px-8 py-3 rounded font-semibold text-sm tracking-wide hover:bg-gold-dark transition-colors"
-          >
-            Discover Our Story
-          </a>
-          <a
-            href="#contact"
-            className="border border-primary-foreground/30 text-primary-foreground px-8 py-3 rounded font-semibold text-sm tracking-wide hover:border-accent hover:text-accent transition-colors"
-          >
-            Start a Conversation
-          </a>
+          <aside className="md:col-span-4 md:pl-6 md:border-l border-foreground/30">
+            <div className="label-mono mb-4">Fig. 01 / The mark</div>
+            <div className="border border-foreground/80 bg-secondary aspect-square flex items-center justify-center mb-3">
+              <img
+                src="/LovelaceIconFinal.png"
+                alt="Lovelace studio mark"
+                className="w-2/3 h-2/3 object-contain"
+                loading="eager"
+              />
+            </div>
+            <p className="text-[13px] text-muted-foreground leading-snug italic">
+              Named for Ada Lovelace, who wrote what is generally
+              considered the first computer program in 1843,
+              for a machine that was never built.
+            </p>
+          </aside>
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 opacity-0 animate-fade-in" style={{ animationDelay: "1.2s" }}>
-        <a
-          href="#about"
-          aria-label="Scroll to About section"
-          className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-primary-foreground/35 text-primary-foreground/80 transition-colors hover:border-accent hover:text-accent"
-        >
-          <ChevronDown className="h-5 w-5 animate-bounce" />
-        </a>
+      <div className="rule-top">
+        <div className="section-shell py-4 flex flex-wrap gap-x-10 gap-y-2 justify-between label-mono">
+          <span>01 &nbsp; Custom Software</span>
+          <span>02 &nbsp; Fullstack Design</span>
+          <span>03 &nbsp; AI Consulting</span>
+          <span className="text-foreground/60">Est. Atlanta, GA</span>
+        </div>
       </div>
     </section>
   );

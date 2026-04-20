@@ -1,82 +1,24 @@
-import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
-
-const navLinks = [
-  { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Team", href: "#team" },
-  { label: "Contact", href: "#contact" },
-];
-
 const Navbar = () => {
-  const [scrolled, setScrolled] = useState(false);
-  const [mobileOpen, setMobileOpen] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
   return (
-    <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-primary/95 backdrop-blur-md shadow-lg py-3"
-          : "bg-transparent py-5"
-      }`}
-    >
-      <div className="mx-0 flex items-center justify-between px-3 md:px-4">
-        <a href="#" className="flex items-center gap-2 font-serif text-2xl font-bold text-primary-foreground tracking-wide">
+    <nav className="rule-bottom bg-background sticky top-0 z-50">
+      <div className="section-shell flex flex-wrap items-center justify-between gap-x-6 gap-y-2 py-4">
+        <a href="#" className="no-underline text-foreground flex items-baseline gap-3">
           <img
             src="/LovelaceIconFinal.png"
-            alt="Lovelace icon"
-            className="h-7 w-7 invert"
+            alt=""
+            className="h-6 w-6 self-center"
             loading="eager"
           />
-          Lovelace
+          <span className="text-[22px] tracking-tight">Lovelace</span>
+          <span className="label-mono hidden sm:inline">Software Studio / Atlanta</span>
         </a>
-
-        {/* Desktop */}
-        <div className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-primary-foreground/80 hover:text-accent transition-colors text-sm font-medium tracking-wide uppercase"
-            >
-              {link.label}
-            </a>
-          ))}
-        </div>
-
-        {/* Mobile toggle */}
-        <button
-          onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden text-primary-foreground"
-          aria-label="Toggle menu"
-        >
-          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        <ul className="flex gap-6 list-none m-0 p-0 text-[14px]">
+          <li><a href="#about" className="text-foreground/80 no-underline hover:text-accent hover:underline">About</a></li>
+          <li><a href="#services" className="text-foreground/80 no-underline hover:text-accent hover:underline">Work</a></li>
+          <li><a href="#team" className="text-foreground/80 no-underline hover:text-accent hover:underline">Team</a></li>
+          <li><a href="#contact" className="text-accent">Contact</a></li>
+        </ul>
       </div>
-
-      {/* Mobile menu */}
-      {mobileOpen && (
-        <div className="md:hidden bg-primary/98 backdrop-blur-md border-t border-primary-foreground/10 animate-fade-in">
-          <div className="flex flex-col items-center gap-4 py-6">
-            {navLinks.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                onClick={() => setMobileOpen(false)}
-                className="text-primary-foreground/80 hover:text-accent transition-colors text-sm font-medium tracking-wide uppercase"
-              >
-                {link.label}
-              </a>
-            ))}
-          </div>
-        </div>
-      )}
     </nav>
   );
 };

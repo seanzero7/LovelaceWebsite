@@ -1,20 +1,12 @@
 import { useState } from "react";
-import { Mail, MapPin, Send, Linkedin } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const projectTypes = [
   "Custom Software / Platform",
   "UX Design",
   "Backend Architecture",
   "AI Integration & Consulting",
-  "Other",
-];
-
-const founders = [
-  { name: "Kendra Garcia", linkedin: "https://www.linkedin.com/in/k3ndra-garcia/" },
-  { name: "Lawton Ward", linkedin: "https://www.linkedin.com/in/lawton-ward/" },
-  { name: "Sean Hall", linkedin: "https://www.linkedin.com/in/sean-hall-gatech/" },
+  "Other / Not sure yet",
 ];
 
 const CONTACT_ENDPOINT = "https://formsubmit.co/ajax/e9e0a59223ff65527b15864e594fc4e1";
@@ -22,8 +14,6 @@ const CONTACT_CC = ["lawton.ward45@gmail.com", "garcia.kendra73@gmail.com"].join
 
 const ContactSection = () => {
   const { toast } = useToast();
-  const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation();
-  const { ref: formRef, isVisible: formVisible } = useScrollAnimation({ threshold: 0.1 });
 
   const [form, setForm] = useState({
     name: "",
@@ -34,15 +24,16 @@ const ContactSection = () => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [sent, setSent] = useState(false);
 
   const validate = () => {
     const errs: Record<string, string> = {};
-    if (!form.name.trim()) errs.name = "Name is required";
-    if (!form.email.trim()) errs.email = "Email is required";
+    if (!form.name.trim()) errs.name = "Please tell us your name.";
+    if (!form.email.trim()) errs.email = "We'll need an email to reply to.";
     else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email))
-      errs.email = "Please enter a valid email";
-    if (!form.message.trim()) errs.message = "Message is required";
-    if (form.message.length > 1000) errs.message = "Message must be under 1000 characters";
+      errs.email = "That doesn't look like a valid email.";
+    if (!form.message.trim()) errs.message = "A message would help.";
+    if (form.message.length > 1000) errs.message = "Please keep it under 1000 characters.";
     setErrors(errs);
     return Object.keys(errs).length === 0;
   };
@@ -55,10 +46,7 @@ const ContactSection = () => {
     try {
       const response = await fetch(CONTACT_ENDPOINT, {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
+        headers: { "Content-Type": "application/json", Accept: "application/json" },
         body: JSON.stringify({
           name: form.name,
           email: form.email,
@@ -72,20 +60,15 @@ const ContactSection = () => {
         }),
       });
 
-      if (!response.ok) {
-        throw new Error("Submission failed");
-      }
+      if (!response.ok) throw new Error("Submission failed");
 
-      toast({
-        title: "Message sent!",
-        description: "Thank you for reaching out. We'll be in touch soon.",
-      });
+      setSent(true);
       setForm({ name: "", email: "", company: "", projectType: "", message: "" });
       setErrors({});
     } catch {
       toast({
-        title: "Message failed to send",
-        description: "Please email lovelacetechnologiesgt@gmail.com directly and we will respond quickly.",
+        title: "Message didn't go through",
+        description: "Email lovelacetechnologiesgt@gmail.com directly and we'll get back to you.",
         variant: "destructive",
       });
     } finally {
@@ -102,160 +85,164 @@ const ContactSection = () => {
     }
   };
 
+  const inputClass =
+    "w-full bg-background border border-foreground/60 px-3 py-3 text-[16px] font-serif focus:outline-none focus:border-accent focus:ring-0";
+
   return (
-    <section id="contact" className="section-padding bg-primary">
-      <div className="container mx-auto max-w-5xl">
-        <div
-          ref={headerRef}
-          className={`text-center mb-16 transition-all duration-700 ease-out ${
-            headerVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          <span className="text-accent text-sm tracking-[0.2em] uppercase font-medium">
-            Get in Touch
-          </span>
-          <h2 className="font-serif text-3xl md:text-5xl font-bold text-primary-foreground mt-3 mb-6">
-            Let's Build Something Meaningful Together
-          </h2>
-          <div className="ornamental-divider max-w-xs mx-auto">
-            <span className="text-accent">✦</span>
+    <section id="contact" className="rule-bottom bg-foreground text-background">
+      <div className="section-shell py-20 md:py-28">
+        <div className="grid md:grid-cols-12 gap-8 mb-14 md:mb-16">
+          <div className="md:col-span-3">
+            <p className="label-mono" style={{ color: "hsl(var(--background) / 0.6)" }}>
+              &sect; 04 / Contact
+            </p>
+          </div>
+          <div className="md:col-span-9">
+            <h2 className="display-serif text-[44px] md:text-[64px] leading-[1.02] max-w-3xl">
+              Tell us about
+              <br />
+              <em>the project.</em>
+            </h2>
+            <p className="mt-6 text-[18px] max-w-xl opacity-80">
+              The quickest way to reach us is by email. We read
+              everything that comes in and usually respond
+              within a day or two.
+            </p>
           </div>
         </div>
 
-        <div
-          ref={formRef}
-          className={`grid lg:grid-cols-5 gap-12 transition-all duration-700 ease-out delay-200 ${
-            formVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          {/* Info */}
-          <div className="lg:col-span-2 space-y-8">
-            <p className="text-primary-foreground/70 text-lg leading-relaxed">
-              Have a project in mind? We'd love to hear about it. Whether you're a startup or an
-              established business, we're here to help bring your vision to life.
-            </p>
-
-            <div className="space-y-4">
-              <div className="flex items-center gap-3">
-                <Mail className="w-5 h-5 text-accent" />
-                <span className="text-primary-foreground/80 text-sm">
-                  lovelacetechnologiesgt@gmail.com
-                </span>
-              </div>
-              <div className="flex items-center gap-3">
-                <MapPin className="w-5 h-5 text-accent" />
-                <span className="text-primary-foreground/80 text-sm">
-                  Atlanta, Georgia (Georgia Tech Alumni)
-                </span>
-              </div>
-            </div>
-
-            {/* Founder LinkedIn Links */}
+        <div className="grid md:grid-cols-12 gap-10 border-t border-background/30 pt-12">
+          <div className="md:col-span-4 space-y-6 text-[16px]">
             <div>
-              <h4 className="text-primary-foreground/50 text-xs uppercase tracking-[0.15em] font-semibold mb-3">
-                Connect with Us
-              </h4>
-              <div className="space-y-2">
-                {founders.map((f) => (
-                  <a
-                    key={f.name}
-                    href={f.linkedin}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-primary-foreground/60 hover:text-accent transition-colors text-sm"
-                  >
-                    <Linkedin className="w-4 h-4" />
-                    {f.name}
-                  </a>
-                ))}
-              </div>
+              <p className="label-mono mb-1" style={{ color: "hsl(var(--background) / 0.6)" }}>Email</p>
+              <a
+                href="mailto:lovelacetechnologiesgt@gmail.com"
+                className="text-background hover:text-accent break-all"
+              >
+                lovelacetechnologiesgt@gmail.com
+              </a>
+            </div>
+            <div>
+              <p className="label-mono mb-1" style={{ color: "hsl(var(--background) / 0.6)" }}>Studio</p>
+              <p>Atlanta, Georgia</p>
+            </div>
+            <div>
+              <p className="label-mono mb-1" style={{ color: "hsl(var(--background) / 0.6)" }}>Response time</p>
+              <p>Typically within one business day.</p>
+            </div>
+            <div className="pt-4 text-[14px] opacity-70 italic">
+              Prefer a form? On your right. We don&rsquo;t love
+              forms either, but it keeps things tidy.
             </div>
           </div>
 
-          {/* Form */}
-          <form onSubmit={handleSubmit} className="lg:col-span-3 space-y-5">
-            <div className="grid sm:grid-cols-2 gap-5">
-              <div>
-                <input
-                  name="name"
-                  value={form.name}
-                  onChange={handleChange}
-                  placeholder="Your Name *"
-                  className="w-full bg-primary-foreground/5 border border-primary-foreground/15 rounded px-4 py-3 text-primary-foreground text-sm placeholder:text-primary-foreground/40 focus:outline-none focus:border-accent transition-colors"
-                  maxLength={100}
-                />
-                {errors.name && (
-                  <p className="text-destructive text-xs mt-1">{errors.name}</p>
-                )}
-              </div>
-              <div>
-                <input
-                  name="email"
-                  value={form.email}
-                  onChange={handleChange}
-                  placeholder="Email Address *"
-                  type="email"
-                  className="w-full bg-primary-foreground/5 border border-primary-foreground/15 rounded px-4 py-3 text-primary-foreground text-sm placeholder:text-primary-foreground/40 focus:outline-none focus:border-accent transition-colors"
-                  maxLength={255}
-                />
-                {errors.email && (
-                  <p className="text-destructive text-xs mt-1">{errors.email}</p>
-                )}
-              </div>
+          {sent ? (
+            <div className="md:col-span-8 border border-background/40 p-8 bg-background/5">
+              <p className="label-mono mb-3" style={{ color: "hsl(var(--background) / 0.6)" }}>Received</p>
+              <p className="display-serif text-[28px] mb-3">Thanks, got it.</p>
+              <p className="text-[16px] opacity-85">
+                One of us will write back soon. If it is urgent,
+                email us directly at{" "}
+                <a href="mailto:lovelacetechnologiesgt@gmail.com" className="text-accent">
+                  lovelacetechnologiesgt@gmail.com
+                </a>
+                .
+              </p>
             </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="md:col-span-8 space-y-5 text-background">
+              <div className="grid md:grid-cols-2 gap-5">
+                <div>
+                  <label className="label-mono block mb-2" style={{ color: "hsl(var(--background) / 0.6)" }} htmlFor="name">
+                    Your name
+                  </label>
+                  <input
+                    id="name"
+                    name="name"
+                    value={form.name}
+                    onChange={handleChange}
+                    className={inputClass + " text-foreground"}
+                    maxLength={100}
+                  />
+                  {errors.name && <p className="text-accent text-xs mt-1">{errors.name}</p>}
+                </div>
 
-            <div className="grid sm:grid-cols-2 gap-5">
-              <input
-                name="company"
-                value={form.company}
-                onChange={handleChange}
-                placeholder="Company (optional)"
-                className="w-full bg-primary-foreground/5 border border-primary-foreground/15 rounded px-4 py-3 text-primary-foreground text-sm placeholder:text-primary-foreground/40 focus:outline-none focus:border-accent transition-colors"
-                maxLength={100}
-              />
-              <select
-                name="projectType"
-                value={form.projectType}
-                onChange={handleChange}
-                className={`w-full bg-primary-foreground/5 border border-primary-foreground/15 rounded px-4 py-3 text-sm focus:outline-none focus:border-accent transition-colors appearance-none ${
-                  form.projectType ? "text-primary-foreground" : "text-primary-foreground/40"
-                }`}
+                <div>
+                  <label className="label-mono block mb-2" style={{ color: "hsl(var(--background) / 0.6)" }} htmlFor="email">
+                    Email
+                  </label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    value={form.email}
+                    onChange={handleChange}
+                    className={inputClass + " text-foreground"}
+                    maxLength={255}
+                  />
+                  {errors.email && <p className="text-accent text-xs mt-1">{errors.email}</p>}
+                </div>
+              </div>
+
+              <div className="grid md:grid-cols-2 gap-5">
+                <div>
+                  <label className="label-mono block mb-2" style={{ color: "hsl(var(--background) / 0.6)" }} htmlFor="company">
+                    Company <span className="normal-case italic opacity-70">(optional)</span>
+                  </label>
+                  <input
+                    id="company"
+                    name="company"
+                    value={form.company}
+                    onChange={handleChange}
+                    className={inputClass + " text-foreground"}
+                    maxLength={100}
+                  />
+                </div>
+
+                <div>
+                  <label className="label-mono block mb-2" style={{ color: "hsl(var(--background) / 0.6)" }} htmlFor="projectType">
+                    Project type
+                  </label>
+                  <select
+                    id="projectType"
+                    name="projectType"
+                    value={form.projectType}
+                    onChange={handleChange}
+                    className={inputClass + " text-foreground"}
+                  >
+                    <option value="">Pick one</option>
+                    {projectTypes.map((t) => (
+                      <option key={t} value={t}>{t}</option>
+                    ))}
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <label className="label-mono block mb-2" style={{ color: "hsl(var(--background) / 0.6)" }} htmlFor="message">
+                  Tell us about it
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={form.message}
+                  onChange={handleChange}
+                  rows={6}
+                  className={inputClass + " text-foreground resize-y"}
+                  maxLength={1000}
+                />
+                {errors.message && <p className="text-accent text-xs mt-1">{errors.message}</p>}
+              </div>
+
+              <button
+                type="submit"
+                disabled={isSubmitting}
+                className="bg-accent text-background px-7 py-3 text-[14px] tracking-wide hover:bg-background hover:text-foreground border border-accent hover:border-background disabled:opacity-50"
               >
-                <option value="" disabled className="text-foreground/40">
-                  Project Type
-                </option>
-                {projectTypes.map((type) => (
-                  <option key={type} value={type} className="text-foreground">
-                    {type}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            <div>
-              <textarea
-                name="message"
-                value={form.message}
-                onChange={handleChange}
-                placeholder="Tell us about your project *"
-                rows={5}
-                className="w-full bg-primary-foreground/5 border border-primary-foreground/15 rounded px-4 py-3 text-primary-foreground text-sm placeholder:text-primary-foreground/40 focus:outline-none focus:border-accent transition-colors resize-none"
-                maxLength={1000}
-              />
-              {errors.message && (
-                <p className="text-destructive text-xs mt-1">{errors.message}</p>
-              )}
-            </div>
-
-            <button
-              type="submit"
-              disabled={isSubmitting}
-              className="bg-accent text-accent-foreground px-8 py-3 rounded font-semibold text-sm tracking-wide hover:bg-gold-dark transition-colors flex items-center gap-2"
-            >
-              <Send className="w-4 h-4" />
-              {isSubmitting ? "Sending..." : "Send Message"}
-            </button>
-          </form>
+                {isSubmitting ? "Sending..." : "Send inquiry"}
+              </button>
+            </form>
+          )}
         </div>
       </div>
     </section>

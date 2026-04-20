@@ -1,125 +1,55 @@
-import { Code2, Heart, Lightbulb } from "lucide-react";
 import adaPortrait from "../../Ada-1945299396.jpg";
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
-
-const values = [
-  {
-    icon: Heart,
-    title: "People First",
-    description:
-      "Every line of code we write serves real people. We design with empathy and build with intention.",
-  },
-  {
-    icon: Lightbulb,
-    title: "Thoughtful Craft",
-    description:
-      "We believe great software is the product of careful thought, not rushed deadlines. Quality is our standard.",
-  },
-  {
-    icon: Code2,
-    title: "Visionary Spirit",
-    description:
-      "Inspired by Ada Lovelace — the first computer programmer — we honor the tradition of seeing what others haven't yet imagined.",
-  },
-];
 
 const AboutSection = () => {
-  const { ref: headerRef, isVisible: headerVisible } = useScrollAnimation();
-  const { ref: storyRef, isVisible: storyVisible } = useScrollAnimation();
-  const { ref: adaRef, isVisible: adaVisible } = useScrollAnimation();
-  const { ref: valuesRef, isVisible: valuesVisible } = useScrollAnimation();
-
   return (
-    <section id="about" className="section-padding bg-background">
-      <div className="container mx-auto max-w-5xl">
-        {/* Section heading */}
-        <div
-          ref={headerRef}
-          className={`text-center mb-16 transition-all duration-700 ease-out ${
-            headerVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          <span className="text-accent text-sm tracking-[0.2em] uppercase font-medium">
-            Our Story
-          </span>
-          <h2 className="font-serif text-3xl md:text-5xl font-bold text-foreground mt-3 mb-6">
-            Where History Meets Innovation
-          </h2>
-          <div className="ornamental-divider max-w-xs mx-auto">
-            <span className="text-accent">✦</span>
+    <section id="about" className="rule-bottom">
+      <div className="section-shell py-20 md:py-28">
+        <div className="grid md:grid-cols-12 gap-x-8 gap-y-10">
+          <div className="md:col-span-3">
+            <p className="label-mono">&sect; 01 / About</p>
+            <h2 className="display-serif text-[34px] md:text-[42px] mt-3">
+              A small studio,
+              <br />
+              <em>on purpose.</em>
+            </h2>
           </div>
-        </div>
 
-        {/* Story */}
-        <div
-          ref={storyRef}
-          className={`max-w-3xl mx-auto text-center mb-16 transition-all duration-700 ease-out delay-100 ${
-            storyVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          <p className="text-muted-foreground text-lg leading-relaxed mb-6">
-            Lovelace was born from a shared vision among three Georgia Tech graduate students who believed software
-            could be more thoughtful, more human, and more meaningful. Named after{" "}
-            <span className="text-accent font-medium">Ada Lovelace</span>, the world's first computer programmer
-            and a visionary who saw the potential of computing long before anyone else, our company carries forward
-            that spirit of imagination and purpose.
-          </p>
-          <p className="text-muted-foreground text-lg leading-relaxed">
-            Today, we're a boutique software studio based in Atlanta, Georgia. We build hand-tailored software
-            and platforms, design end-to-end user experiences, architect resilient backends, and help businesses
-            integrate AI in ways that are strategy-driven rather than trend-driven. Every engagement is uniquely
-            designed to fit the people behind the business while staying true to our People First philosophy.
-          </p>
-        </div>
-
-        {/* Ada Lovelace Feature */}
-        <div
-          ref={adaRef}
-          className={`flex flex-col md:flex-row items-center gap-10 mb-20 transition-all duration-700 ease-out ${
-            adaVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-          }`}
-        >
-          <div className="w-48 h-60 flex-shrink-0 rounded-lg overflow-hidden border-2 border-accent/30 shadow-lg">
-            <img
-              src={adaPortrait}
-              alt="Portrait of Ada Lovelace, the world's first computer programmer"
-              className="w-full h-full object-cover"
-              loading="lazy"
-            />
-          </div>
-          <div className="text-center md:text-left">
-            <blockquote className="font-serif text-xl md:text-2xl text-foreground italic leading-relaxed mb-4">
-              "The Analytical Engine weaves algebraical patterns just as the Jacquard loom weaves flowers and leaves."
-            </blockquote>
-            <p className="text-accent font-medium text-sm tracking-wide mb-4">— Ada Lovelace, 1843</p>
-            <p className="text-muted-foreground leading-relaxed">
-              Named after Ada Lovelace, the world's first computer programmer, we honor her legacy of
-              innovation and vision by building technology that serves people first.
+          <div className="md:col-span-6 md:col-start-5 space-y-5 text-[18px] leading-relaxed">
+            <p>
+              Lovelace is a boutique software studio based in
+              Atlanta. We were founded by three Georgia Tech
+              graduates who kept ending up on the same projects
+              and decided to make it official: Kendra in design,
+              Sean in engineering, Lawton on the business side.
+            </p>
+            <p>
+              We are a studio, not an agency. That means the
+              people you meet on the first call are the same
+              people writing the code, drawing the screens, and
+              shipping the work. No account managers. No
+              handoffs. No offshore team you have never met.
+            </p>
+            <p>
+              We take on a small number of engagements at a
+              time. It is the only honest way we know how to
+              work, and it is the reason our clients get our
+              attention rather than our apologies.
             </p>
           </div>
-        </div>
 
-        {/* Values */}
-        <div ref={valuesRef} className="grid md:grid-cols-3 gap-8">
-          {values.map((value, index) => (
-            <div
-              key={value.title}
-              className={`bg-card rounded-lg p-8 text-center border border-border hover:border-accent/30 transition-all duration-700 ease-out group ${
-                valuesVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-              }`}
-              style={{ transitionDelay: `${index * 150}ms` }}
-            >
-              <div className="w-12 h-12 mx-auto mb-5 rounded-full bg-accent/10 flex items-center justify-center group-hover:bg-accent/20 transition-colors">
-                <value.icon className="w-5 h-5 text-accent" />
-              </div>
-              <h3 className="font-serif text-xl font-semibold text-foreground mb-3">
-                {value.title}
-              </h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                {value.description}
-              </p>
-            </div>
-          ))}
+          <aside className="md:col-span-3 md:col-start-10">
+            <div className="label-mono mb-3">Fig. 02 / Namesake</div>
+            <img
+              src={adaPortrait}
+              alt="Ada Lovelace, portrait"
+              className="w-full border border-foreground/80 grayscale mb-2"
+              loading="lazy"
+            />
+            <p className="text-[13px] text-muted-foreground leading-snug italic">
+              Augusta Ada King, Countess of Lovelace
+              (1815 to 1852). Portrait, c. 1840.
+            </p>
+          </aside>
         </div>
       </div>
     </section>
